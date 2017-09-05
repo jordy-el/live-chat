@@ -12,4 +12,10 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery.min
+//= require bootstrap.min
+//= require bootstrap-datepicker
+//= require material.min
+//= require material-kit
+//= require nouislider.min
 //= require_tree .

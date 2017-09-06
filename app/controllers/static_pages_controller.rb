@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-    @messages = Message.last(10)
+    @messages = Message.where('updated_at > ?', 10.minutes.ago)
   end
 end

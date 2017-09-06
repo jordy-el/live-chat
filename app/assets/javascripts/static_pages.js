@@ -90,7 +90,8 @@ function main() {
 
   // Check if user is at bottom of message list
   function userAtBottom() {
-    return true
+    const element = $('#message-box')[0];
+    return element.scrollHeight - element.scrollTop - 45 === element.clientHeight;
   }
 
   // Scroll to bottom of message list
@@ -98,13 +99,16 @@ function main() {
     $('#messages-bottom')[0].scrollIntoView();
   }
 
-  // Tell user there is new messages and give them anchor to bottom of message list
-  function promptScroll() {
+  // Tell user there is new messages
+  function alertMessages() {
 
   }
 
   // Evaluate user name immediately
   evaluateUsername();
+
+  // Scroll to bottom immediately
+  scrollToBottom();
 
   // Listener for enter inside username input
   $('#username-form').keypress(function(event) {
@@ -153,11 +157,17 @@ function main() {
 
   // Listener for new message incoming
   $(document).on('newMessage', function() {
-    if (userAtBottom()) {
+    const latestMessageUsername = $('#message-list').children().last().children().first().text();
+    if (userAtBottom() || latestMessageUsername === username) {
       scrollToBottom();
     } else {
-      promptScroll();
+      alertMessages();
     }
+  });
+
+  // Listener for scrolldown arrow
+  $('#scroll-down').click(function() {
+    scrollToBottom();
   });
 }
 

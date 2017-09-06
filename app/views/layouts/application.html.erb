@@ -9,6 +9,7 @@
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
         <script>const authenticity_token = '<%= form_authenticity_token %>';</script>
         <script>const messageURL = '<%=  Rails.env.production? ? 'https://actioncable-chat-app.herokuapp.com/api/messages' : 'http://localhost:3000/api/messages' %>';</script>
+        <script>const userList = <%= raw @users %>;</script>
     </head>
 
     <body>

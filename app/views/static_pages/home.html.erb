@@ -23,10 +23,9 @@
             <li>
                 <h3 class="uk-accordion-title"><span uk-icon="icon: users"></span> Room</h3>
                 <div class="uk-accordion-content">
-                    <ul class="uk-list uk-list-divider uk-margin-remove-bottom uk-padding-small">
-                        <%# TODO Implement user list %>
-                        <% 20.times do %>
-                            <%= render 'user', username: 'Example User' %>
+                    <ul id="user-list" class="uk-list uk-list-divider uk-margin-remove-bottom uk-padding-small">
+                        <% @users.each do |u| %>
+                            <%= render 'user', username: u %>
                         <% end %>
                     </ul>
                 </div>

@@ -101,6 +101,17 @@ function main() {
     // TODO Implement new message alerts to scroll down
   }
 
+  function createUserItem(user) {
+    return '<li class="user-list-item"><a>' + user + '</a></li>';
+  }
+
+  function renderUserList() {
+    $('.user-list-item').remove();
+    userList.forEach((u) => {
+      $('#user-list').append(createUserItem(u));
+    })
+  }
+
   // Evaluate user name immediately
   evaluateUsername();
 
@@ -158,6 +169,8 @@ function main() {
   // Listener for new message incoming
   $(document).on('newMessage', function() {
     const latestMessageUsername = $('#message-list').children().last().children().first().text();
+    if (!userList.includes(latestMessageUsername)) userList.push(latestMessageUsername);
+    renderUserList();
     if (userAtBottom() || latestMessageUsername === username) {
       scrollToBottom();
     } else {

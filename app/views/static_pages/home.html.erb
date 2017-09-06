@@ -39,11 +39,10 @@
         </ul>
     </div>
     <div class="uk-width-3-4">
-        <div class="uk-width-1-1 message-box uk-overflow-auto">
-            <ul class="uk-list uk-list-divider uk-margin-remove-bottom uk-padding-small">
-                <%# TODO Implement message list %>
-                <% 50.times do %>
-                    <%= render 'message', username: 'Example User', message: 'Example Message' %>
+        <div id="message-box" class="uk-width-1-1 message-box uk-overflow-auto">
+            <ul class="uk-list uk-list-divider uk-margin-remove-bottom uk-margin-remove-top uk-padding-small">
+                <% @messages.each do |m| %>
+                    <%= render 'message', username: m.user, message: m.message %>
                 <% end %>
             </ul>
         </div>

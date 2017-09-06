@@ -101,7 +101,7 @@ function main() {
 
   // Tell user there is new messages
   function alertMessages() {
-
+    // TODO Implement new message alerts to scroll down
   }
 
   // Evaluate user name immediately

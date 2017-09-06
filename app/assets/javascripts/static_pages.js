@@ -2,9 +2,6 @@ const newMessage = new Event('newMessage');
 
 function main() {
 
-  // Message creation API
-  const messageURL = 'https://actioncable-chat-app.herokuapp.com/api/messages';
-
   // Icons for username input
   const userIcon = {
     locked: '<span id="user-locked-status" class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>',
@@ -139,10 +136,10 @@ function main() {
     $input = $('#message-input');
     const message = $input.val();
     if (message.length !== 0 && message.length <= 140) {
+      $input.val('');
       submitMessage(message, username)
       .then(() => {
         validateMessageForm();
-        $input.val('');
       })
       .catch(() => {
         UIkit.notification('Connection Error', {status: 'danger', pos: 'top-right', timeout: 1500});

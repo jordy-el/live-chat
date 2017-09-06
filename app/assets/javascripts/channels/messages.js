@@ -5,6 +5,6 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
   },
 
   createMessageNode: function(message, user) {
-  return '<li><a>' + user + '</a><span>: </span><span>' + message + '</span></li>';
+  return '<li class="message"><a class="highlight-link">' + user + '</a><span>: </span><span class="message-body">' + message + '</span></li>';
   },
 });

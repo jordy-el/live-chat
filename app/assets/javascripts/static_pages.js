@@ -101,10 +101,12 @@ function main() {
     // TODO Implement new message alerts to scroll down
   }
 
+  // Return user list HTML element
   function createUserItem(user) {
-    return '<li class="user-list-item"><a>' + user + '</a></li>';
+    return '<li class="user-list-item"><a class="highlight-link">' + user + '</a></li>';
   }
 
+  // Render full user list
   function renderUserList() {
     $('.user-list-item').remove();
     userList.forEach((u) => {
@@ -168,7 +170,8 @@ function main() {
 
   // Listener for new message incoming
   $(document).on('newMessage', function() {
-    const latestMessageUsername = $('#message-list').children().last().children().first().text();
+    const $latestMessage = $('#message-list').children().last();
+    const latestMessageUsername = $latestMessage.last().children().first().text();
     if (!userList.includes(latestMessageUsername)) userList.push(latestMessageUsername);
     renderUserList();
     if (userAtBottom() || latestMessageUsername === username) {
@@ -184,7 +187,7 @@ function main() {
   });
 
   // Listener for highlight link click
-  $('.highlight-link').click(function() {
+  $(document).on('click', '.highlight-link', function() {
     $highlightSelector = $('.highlight-link:contains(' + $(this).text() + ')');
     if (!$highlightSelector.hasClass('highlighted')) {
       $highlightSelector.addClass('highlighted');

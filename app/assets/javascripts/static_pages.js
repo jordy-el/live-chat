@@ -3,7 +3,7 @@ const newMessage = new Event('newMessage');
 function main() {
 
   // Message creation API
-  const messageURL = 'http://localhost:3000/api/messages';
+  const messageURL = 'https://localhost:3000/api/messages';
 
   // Icons for username input
   const userIcon = {

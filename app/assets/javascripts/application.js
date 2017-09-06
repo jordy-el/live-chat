@@ -16,4 +16,5 @@
 //= require uikit
 //= require uikit-icons
 //= require axios
+//= require cookies
 //= require_tree .

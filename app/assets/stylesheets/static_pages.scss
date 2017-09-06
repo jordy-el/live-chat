@@ -11,4 +11,19 @@
   .message-box {
     height: calc(100% - 70px);
   }
+
+  .username-saved {
+
+    $color: #ffb03d;
+
+    border: 1px solid $color;
+
+    & > input {
+      color: $color;
+    }
+
+    & > span {
+      color: $color;
+    }
+  }
 }

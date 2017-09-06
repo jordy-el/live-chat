@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-    @messages = Message.last(15)
+    @messages = Message.last(10)
   end
 end

@@ -182,6 +182,16 @@ function main() {
   $('#scroll-down').click(function() {
     scrollToBottom();
   });
+
+  // Listener for highlight link click
+  $('.highlight-link').click(function() {
+    $highlightSelector = $('.highlight-link:contains(' + $(this).text() + ')');
+    if (!$highlightSelector.hasClass('highlighted')) {
+      $highlightSelector.addClass('highlighted');
+    } else {
+      $highlightSelector.removeClass('highlighted');
+    }
+  });
 }
 
 $(document).ready(main);

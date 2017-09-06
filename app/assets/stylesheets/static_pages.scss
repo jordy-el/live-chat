@@ -10,6 +10,10 @@
 
   .message-box {
     height: calc(100% - 70px);
+
+    .highlighted {
+      color: #ff9d0e;
+    }
   }
 
   .username-saved {

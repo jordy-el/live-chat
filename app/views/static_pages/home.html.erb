@@ -1,0 +1,59 @@
+<div id="container" class="uk-grid-collapse" uk-grid uk-height-match>
+    <div class="uk-width-1-4 uk-padding-small uk-section-secondary uk-height-viewport uk-overflow-auto">
+        <ul uk-accordion="collapsible: false">
+            <li>
+                <h3 class="uk-accordion-title">You</h3>
+                <div class="uk-accordion-content">
+                    <form>
+                        <fieldset class="uk-fieldset">
+                            <%# TODO Implement input blocking %>
+                            <% if false %>
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                                    <input class="uk-input uk-disabled" id="name" placeholder="Username">
+                                </div>
+                            <% else %>
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: unlock"></span>
+                                    <input class="uk-input" id="name" placeholder="Username">
+                                </div>
+                            <% end %>
+                        </fieldset>
+                    </form>
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-primary uk-width-1-1">Submit</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <h3 class="uk-accordion-title">Room</h3>
+                <div class="uk-accordion-content">
+                    <ul class="uk-list uk-list-divider uk-margin-remove-bottom uk-padding-small">
+                        <%# TODO Implement user list %>
+                        <% 20.times do %>
+                            <%= render 'user', username: 'Example User', latest_message: 'Example Message' %>
+                        <% end %>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="uk-width-3-4">
+        <div class="uk-width-1-1 message-box uk-overflow-auto">
+            <ul class="uk-list uk-list-divider uk-margin-remove-bottom uk-padding-small">
+                <%# TODO Implement message list %>
+                <% 50.times do %>
+                    <%= render 'message', username: 'Example User', message: 'Example Message' %>
+                <% end %>
+            </ul>
+        </div>
+        <div class="uk-width-1-1 uk-section-muted" style="height: 70px;">
+            <form class="uk-padding-small">
+                <fieldset class="uk-fieldset">
+                    <input class="uk-input uk-width-5-6" placeholder="Message">
+                    <button class="uk-button uk-button-primary">Send</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

@@ -12,4 +12,8 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery
+//= require uikit
+//= require uikit-icons
+//= require axios
 //= require_tree .

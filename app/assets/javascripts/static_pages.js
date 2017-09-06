@@ -1,3 +1,5 @@
+const newMessage = new Event('newMessage');
+
 function main() {
 
   // Message creation API
@@ -11,16 +13,6 @@ function main() {
 
   // Init username variable
   let username;
-
-  // Return new message node
-  function createMessageNode(message, user) {
-    return `
-        <li>
-            <a>${user}</a><span>: </span>
-            <span>${message}</span>
-        </li>
-    `;
-  }
 
   // Submit message to server
   function submitMessage(message, user) {
@@ -84,7 +76,7 @@ function main() {
     Cookies.set('username', value);
   }
 
-  // Function for checking cookie and enabling/disabling forms accordingly
+  // Check cookie and enable/disable forms accordingly
   function evaluateUsername() {
     if (getUsername()) {
       username = getUsername();
@@ -94,6 +86,21 @@ function main() {
       enableUserForm();
       disableMessageForm();
     }
+  }
+
+  // Check if user is at bottom of message list
+  function userAtBottom() {
+    return true
+  }
+
+  // Scroll to bottom of message list
+  function scrollToBottom() {
+    $('#messages-bottom')[0].scrollIntoView();
+  }
+
+  // Tell user there is new messages and give them anchor to bottom of message list
+  function promptScroll() {
+
   }
 
   // Evaluate user name immediately
@@ -129,13 +136,11 @@ function main() {
     const message = $input.val();
     if (message.length !== 0) {
       submitMessage(message, username)
-      .then((response) => {
-        const message = response.data.message;
-        $('#message-list').append(createMessageNode(message, username));
+      .then(() => {
         validateMessageForm();
         $input.val('');
       })
-      .catch((e) => {
+      .catch(() => {
         UIkit.notification('Your message is too long!', {status: 'danger', pos: 'top-right', timeout: 1500});
         invalidateMessageForm();
       });
@@ -144,6 +149,15 @@ function main() {
       invalidateMessageForm();
     }
     return false
+  });
+
+  // Listener for new message incoming
+  $(document).on('newMessage', function() {
+    if (userAtBottom()) {
+      scrollToBottom();
+    } else {
+      promptScroll();
+    }
   });
 }
 

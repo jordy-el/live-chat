@@ -37,8 +37,9 @@
                     <%= render 'message', username: m.user, message: m.message %>
                 <% end %>
             </ul>
+            <div id="messages-bottom" style="visibility: hidden;"></div>
         </div>
-        <div class="uk-width-1-1 uk-section-muted" style="height: 70px;">
+        <div class="uk-width-1-1 uk-section-muted" style="height: 70px;" title="Hello World" uk-tooltip>
             <form class="uk-padding-small uk-width-4-5 uk-inline">
                 <fieldset class="uk-fieldset">
                     <input id="message-input" class="uk-input" placeholder="Message">

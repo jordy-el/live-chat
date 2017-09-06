@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
 
+  mount ActionCable.server => '/cable'
 
   scope '/api' do
     resources :messages, only: [:create]

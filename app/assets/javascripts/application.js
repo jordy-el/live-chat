@@ -18,3 +18,4 @@
 //= require axios
 //= require cookies
 //= require_tree .
+//= require_tree ./channels

@@ -138,18 +138,21 @@ function main() {
   $('#message-submit').click(function() {
     $input = $('#message-input');
     const message = $input.val();
-    if (message.length !== 0) {
+    if (message.length !== 0 && message.length <= 140) {
       submitMessage(message, username)
       .then(() => {
         validateMessageForm();
         $input.val('');
       })
       .catch(() => {
-        UIkit.notification('Your message is too long!', {status: 'danger', pos: 'top-right', timeout: 1500});
+        UIkit.notification('Connection Error', {status: 'danger', pos: 'top-right', timeout: 1500});
         invalidateMessageForm();
       });
-    } else {
+    } else if (message.length === 0) {
       UIkit.notification('Your message is too short!', {status: 'danger', pos: 'top-right', timeout: 1500});
+      invalidateMessageForm();
+    } else if (message.length > 140) {
+      UIkit.notification('Your message is too long!', {status: 'danger', pos: 'top-right', timeout: 1500});
       invalidateMessageForm();
     }
     return false

@@ -1,8 +1,11 @@
 <div id="container" class="uk-grid-collapse" uk-grid uk-height-match>
     <div class="uk-width-1-4 uk-padding-small uk-section-secondary uk-height-viewport uk-overflow-auto">
+        <div class="uk-width-1-1 uk-flex uk-flex-around uk-padding-small">
+            <span uk-icon="icon: comments; ratio: 5" style="color: #479ef1;"></span>
+        </div>
         <ul uk-accordion="collapsible: false">
             <li>
-                <h3 class="uk-accordion-title">You</h3>
+                <h3 class="uk-accordion-title"><span uk-icon="icon: user"></span> You</h3>
                 <div class="uk-accordion-content">
                     <form>
                         <fieldset class="uk-fieldset">
@@ -18,7 +21,7 @@
                 </div>
             </li>
             <li>
-                <h3 class="uk-accordion-title">Room</h3>
+                <h3 class="uk-accordion-title"><span uk-icon="icon: users"></span> Room</h3>
                 <div class="uk-accordion-content">
                     <ul class="uk-list uk-list-divider uk-margin-remove-bottom uk-padding-small">
                         <%# TODO Implement user list %>

@@ -6,5 +6,4 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
-  channel_prefix: live-chat-app_production
+  url: redis://redistogo:0384d3a88f714ff71ebc2585c7f76fd9@chubb.redistogo.com:9173/

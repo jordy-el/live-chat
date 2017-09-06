@@ -3,7 +3,7 @@ const newMessage = new Event('newMessage');
 function main() {
 
   // Message creation API
-  const messageURL = 'https://localhost:3000/api/messages';
+  const messageURL = 'https://actioncable-chat-app.herokuapp.com/api/messages';
 
   // Icons for username input
   const userIcon = {

@@ -1,4 +1,4 @@
-// TODO Implement [alert on new message, tooltip to set username, auto-highlighting on new message]
+//TODO Implement [alert on new message, auto-highlighting on new message, message length limit, user length limit]
 
 const newMessage = new Event('newMessage');
 
@@ -12,6 +12,16 @@ function main() {
 
   // Init username variable
   let username;
+
+  // Close username prompt overlay
+  function closeOverlay() {
+    $('.messages-overlay').fadeOut();
+  }
+
+  // Open username prompt overlay
+  function openOverlay() {
+    $('.messages-overlay').fadeIn();
+  }
 
   // Submit message to server
   function submitMessage(message, user) {
@@ -81,9 +91,11 @@ function main() {
       username = getUsername();
       disableUserForm();
       enableMessageForm();
+      closeOverlay();
     } else {
       enableUserForm();
       disableMessageForm();
+      openOverlay();
     }
   }
 
@@ -100,7 +112,7 @@ function main() {
 
   // Tell user there is new messages
   function alertMessages() {
-    // TODO Implement new message alerts to scroll down
+    //TODO Implement new message alerts to scroll down
   }
 
   // Return user list HTML element

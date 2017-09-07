@@ -33,22 +33,28 @@
         </ul>
     </div>
     <div class="uk-width-3-4">
-        <div id="message-box" class="uk-width-1-1 message-box uk-overflow-auto">
-            <ul id="message-list" class="uk-list uk-list-divider uk-margin-remove-bottom uk-margin-remove-top uk-padding-small">
-                <% @messages.each do |m| %>
-                    <%= render 'message', username: m.user, message: m.message %>
-                <% end %>
-            </ul>
-            <div id="messages-bottom" style="visibility: hidden;"></div>
-            <a id="scroll-down" class="uk-position-absolute uk-transform-center" style="right: 10px; bottom: 60px;" uk-icon="icon: chevron-down; ratio: 2"></a>
-        </div>
-        <div id="message-form" class="uk-width-1-1 uk-section-muted" style="height: 70px;">
-            <form class="uk-padding-small uk-width-4-5 uk-inline">
-                <fieldset class="uk-fieldset">
-                    <input id="message-input" class="uk-input" placeholder="Message">
-                </fieldset>
-            </form>
-            <button id="message-submit" class="uk-button uk-button-primary uk-width-1-6">Send</button>
+        <div class="uk-inline uk-height-1-1 uk-width-1-1">
+            <div id="message-box" class="uk-width-1-1 message-box uk-overflow-auto">
+                <ul id="message-list" class="uk-list uk-list-divider uk-margin-remove-bottom uk-margin-remove-top uk-padding-small">
+                    <% @messages.each do |m| %>
+                        <%= render 'message', username: m.user, message: m.message %>
+                    <% end %>
+                </ul>
+                <div class="uk-overlay-primary uk-position-cover messages-overlay" style="z-index: 1;"></div>
+                <div class="uk-overlay uk-position-center uk-light messages-overlay" style="z-index: 2;">
+                    <h2>Choose a username</h2>
+                </div>
+                <div id="messages-bottom" style="visibility: hidden;"></div>
+                <a id="scroll-down" class="uk-position-absolute uk-transform-center" style="right: 10px; bottom: 60px;" uk-icon="icon: chevron-down; ratio: 2"></a>
+            </div>
+            <div id="message-form" class="uk-width-1-1 uk-section-muted" style="height: 70px;">
+                <form class="uk-padding-small uk-width-4-5 uk-inline">
+                    <fieldset class="uk-fieldset">
+                        <input id="message-input" class="uk-input" placeholder="Message">
+                    </fieldset>
+                </form>
+                <button id="message-submit" class="uk-button uk-button-primary uk-width-1-6">Send</button>
+            </div>
         </div>
     </div>
 </div>

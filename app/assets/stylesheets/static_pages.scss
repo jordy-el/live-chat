@@ -2,48 +2,67 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#container {
+html {
 
-  * {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  $custom-font: 'Work Sans', sans-serif;
+
+  div {
+    font-family: $custom-font;
   }
 
-  & > div {
-    max-height: 100vh;
-  }
+  #container {
 
-  .message-box {
-    height: calc(100% - 70px);
+    font-family: $custom-font;
 
-    .highlighted {
-      color: #ff9d0e;
+    h2, h3 {
+      font-family: $custom-font;
     }
 
-    .message-body {
-      -webkit-touch-callout: initial;
-      -webkit-user-select: initial;
-      -moz-user-select: initial;
-      -ms-user-select: initial;
-      user-select: initial;
-    }
-  }
-
-  .username-saved {
-
-    $color: #ffb03d;
-
-    border: 1px solid $color;
-
-    & > input {
-      color: $color;
+    * {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
-    & > span {
-      color: $color;
+    & > div {
+      max-height: 100vh;
+    }
+
+    .message-box {
+      height: calc(100% - 70px);
+
+      .highlighted {
+        color: #ff9d0e;
+      }
+
+      .message-body {
+        -webkit-touch-callout: initial;
+        -webkit-user-select: initial;
+        -moz-user-select: initial;
+        -ms-user-select: initial;
+        user-select: initial;
+      }
+
+      .uk-overlay-primary {
+        display: none;
+      }
+    }
+
+    .username-saved {
+
+      $color: #ffb03d;
+
+      border: 1px solid $color;
+
+      & > input {
+        color: $color;
+      }
+
+      & > span {
+        color: $color;
+      }
     }
   }
 }

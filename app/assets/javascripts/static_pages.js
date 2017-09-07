@@ -1,3 +1,5 @@
+// TODO Implement [alert on new message, tooltip to set username, auto-highlighting on new message]
+
 const newMessage = new Event('newMessage');
 
 function main() {

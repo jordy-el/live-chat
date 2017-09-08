@@ -30,6 +30,26 @@ html {
       max-height: 100vh;
     }
 
+    .user-list-item {
+
+      .highlight-link {
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        &.highlighted::before {
+          content: "•  ";
+          color: #ff9d0e;
+        }
+
+        &::before {
+          content: "•  ";
+          color: #222;
+        }
+      }
+    }
+
     .message-box {
       height: calc(100% - 70px);
 

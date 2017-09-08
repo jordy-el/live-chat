@@ -212,7 +212,6 @@ function main() {
     } else {
       alertMessages();
     }
-    console.log(selectedUsers, latestMessageUsername);
     if (selectedUsers.includes(latestMessageUsername)) $latestMessage.find('.highlight-link').addClass('highlighted');
   });
 

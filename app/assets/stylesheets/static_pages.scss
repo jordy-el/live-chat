@@ -73,6 +73,10 @@ html {
         display: none;
       }
 
+      .messages-overlay-background {
+        backdrop-filter: blur(3px);
+      }
+
       #scroll-down {
         opacity: 0.5;
       }

@@ -40,7 +40,7 @@
                         <%= render 'message', username: m.user, message: m.message, time_left: 600 - (Time.now.to_i - m.created_at.to_i) %>
                     <% end %>
                 </ul>
-                <div class="uk-overlay-primary uk-position-cover messages-overlay" style="z-index: 1;"></div>
+                <div class="uk-overlay-primary uk-position-cover messages-overlay messages-overlay-background" style="z-index: 1;"></div>
                 <div class="uk-overlay uk-position-center uk-light messages-overlay" style="z-index: 2;">
                     <h2>Choose a username</h2>
                 </div>

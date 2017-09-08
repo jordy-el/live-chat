@@ -6,6 +6,6 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
   },
 
   createMessageNode: function(message, user, timeLeft) {
-  return '<li class="message" data-time-left="' + timeLeft + '"><a class="highlight-link">' + user + '</a><span>: </span><span class="message-body">' + message + '</span></li>';
+  return '<li class="message" data-time-left="' + timeLeft + '"><a class="highlight-link">' + user + '</a><span>: </span><span class="message-body">' + message + '</span><div class="message-progress uk-inline uk-align-right"></div></li>';
   },
 });

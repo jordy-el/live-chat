@@ -128,11 +128,29 @@ function main() {
     })
   }
 
+  // Render progress bars on messages
+  function renderProgressBars() {
+    $('.message-progress').each(function() {
+      $(this).circleProgress({
+        animation: false,
+        value: $(this).parent().data('time-left') / 600,
+        size: 24,
+        fill: {
+          gradient: ["#ff9d0e", "#ffc46e"]
+        },
+        thickness: 2,
+      });
+    });
+  }
+
   // Evaluate user name immediately
   evaluateUsername();
 
   // Scroll to bottom immediately
   scrollToBottom();
+
+  // Render progress bars immediately
+  renderProgressBars();
 
   // Listener for enter inside username input
   $('#username-form').keypress(function(event) {
@@ -186,6 +204,7 @@ function main() {
   $(document).on('newMessage', function() {
     const $latestMessage = $('#message-list').children().last();
     const latestMessageUsername = $latestMessage.last().children().first().text();
+    renderProgressBars();
     if (!userList.includes(latestMessageUsername)) userList.push(latestMessageUsername);
     renderUserList();
     if (userAtBottom() || latestMessageUsername === username) {
@@ -193,6 +212,8 @@ function main() {
     } else {
       alertMessages();
     }
+    console.log(selectedUsers, latestMessageUsername);
+    if (selectedUsers.includes(latestMessageUsername)) $latestMessage.find('.highlight-link').addClass('highlighted');
   });
 
   // Listener for scrolldown arrow
@@ -200,17 +221,29 @@ function main() {
     scrollToBottom();
   });
 
+  // Initialize selected user list
+  let selectedUsers = [];
+
+  function toggleSelect(selector) {
+    const toggledUser = selector[0].innerHTML;
+    if (!selector.hasClass('highlighted')) {
+      selector.addClass('highlighted');
+      selectedUsers.push(toggledUser);
+    } else {
+      selector.removeClass('highlighted');
+      selectedUsers = selectedUsers.filter((u) => u !== toggledUser);
+    }
+  }
+
   // Listener for highlight link click
   $(document).on('click', '.highlight-link', function() {
     $highlightSelector = $('.highlight-link:contains(' + $(this).text() + ')');
-    if (!$highlightSelector.hasClass('highlighted')) {
-      $highlightSelector.addClass('highlighted');
-    } else {
-      $highlightSelector.removeClass('highlighted');
-    }
+    toggleSelect($highlightSelector);
   });
 
+  // Countdown messages
   const messageCountdown = setInterval(function() {
+    renderProgressBars();
     $('.message').each(function() {
       const $node = $(this);
       const timeLeft = Number($node.data('time-left'));

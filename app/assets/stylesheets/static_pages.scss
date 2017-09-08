@@ -33,8 +33,12 @@ html {
     .message-box {
       height: calc(100% - 70px);
 
-      .highlighted {
-        color: #ff9d0e;
+      .highlight-link {
+
+        &.highlighted {
+          color: #ff9d0e;
+        }
+        color: #479ef1;
       }
 
       .message-body {
@@ -47,6 +51,10 @@ html {
 
       .uk-overlay-primary {
         display: none;
+      }
+
+      #scroll-down {
+        opacity: 0.5;
       }
     }
 

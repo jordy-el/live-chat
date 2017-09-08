@@ -125,14 +125,24 @@ function main() {
     $('.user-list-item').find('a').each(function() {
       if (!userList.includes($(this).text())) $(this).remove();
     });
+    const listedUsers = jQuery.makeArray($('.user-list-item').find('.highlight-link').map(function(_i, node) {
+      return node.text;
+    }));
+    const presentUsers = jQuery.makeArray($('.message').find('.highlight-link').map(function(_i, node) {
+      return node.text;
+    }));
     userList.forEach(function(u) {
-      const listedUsers = jQuery.makeArray($('.user-list-item').find('.highlight-link').map(function(i, node) {
-        return node.text;
-      }));
       if (!listedUsers.includes(u)) {
         $('#user-list').append(createUserItem(u));
       }
-    })
+    });
+    listedUsers.forEach(function(u) {
+      const user = u;
+      if (!presentUsers.includes(u)) {
+        $('a:contains(' + u + ')').parent().remove();
+        userList = userList.filter((u) => u !== user)
+      }
+    });
   }
 
   // Render progress bars on messages

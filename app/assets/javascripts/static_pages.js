@@ -1,4 +1,4 @@
-//TODO Implement [alert on new message, auto-highlighting on new message, message length limit, user length limit]
+//TODO Implement [alert on new message, message length limit, user length limit]
 
 const newMessage = new Event('newMessage');
 
@@ -122,9 +122,16 @@ function main() {
 
   // Render full user list
   function renderUserList() {
-    $('.user-list-item').remove();
-    userList.forEach((u) => {
-      $('#user-list').append(createUserItem(u));
+    $('.user-list-item').find('a').each(function() {
+      if (!userList.includes($(this).text())) $(this).remove();
+    });
+    userList.forEach(function(u) {
+      const listedUsers = jQuery.makeArray($('.user-list-item').find('.highlight-link').map(function(i, node) {
+        return node.text;
+      }));
+      if (!listedUsers.includes(u)) {
+        $('#user-list').append(createUserItem(u));
+      }
     })
   }
 
@@ -243,10 +250,10 @@ function main() {
   // Countdown messages
   const messageCountdown = setInterval(function() {
     renderProgressBars();
+    renderUserList();
     $('.message').each(function() {
       const $node = $(this);
       const timeLeft = Number($node.data('time-left'));
-      renderUserList();
       if (timeLeft > 0) {
         $node.data('time-left', timeLeft - 1);
       } else {

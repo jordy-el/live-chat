@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    @messages = Message.where('updated_at > ?', 10.minutes.ago)
-    @users = @messages.pluck(:user).to_a.uniq
+    last_messages = Message.where('updated_at > ?', 10.minutes.ago)
+    @messages = last_messages.select(:message, :user, :created_at)
+    @users = last_messages.pluck(:user).uniq
   end
 end

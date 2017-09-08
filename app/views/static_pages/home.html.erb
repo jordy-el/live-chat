@@ -37,7 +37,7 @@
             <div id="message-box" class="uk-width-1-1 message-box uk-overflow-auto">
                 <ul id="message-list" class="uk-list uk-list-divider uk-margin-remove-bottom uk-margin-remove-top uk-padding-small">
                     <% @messages.each do |m| %>
-                        <%= render 'message', username: m.user, message: m.message %>
+                        <%= render 'message', username: m.user, message: m.message, time_left: 600 - (Time.now.to_i - m.created_at.to_i) %>
                     <% end %>
                 </ul>
                 <div class="uk-overlay-primary uk-position-cover messages-overlay" style="z-index: 1;"></div>

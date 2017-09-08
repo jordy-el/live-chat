@@ -17,5 +17,7 @@
 //= require uikit-icons
 //= require axios
 //= require cookies
+//= require moment
+//= require circle-progress
 //= require_tree .
 //= require_tree ./channels

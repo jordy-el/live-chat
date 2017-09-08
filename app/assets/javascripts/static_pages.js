@@ -209,6 +209,19 @@ function main() {
       $highlightSelector.removeClass('highlighted');
     }
   });
+
+  const messageCountdown = setInterval(function() {
+    $('.message').each(function() {
+      const $node = $(this);
+      const timeLeft = Number($node.data('time-left'));
+      renderUserList();
+      if (timeLeft > 0) {
+        $node.data('time-left', timeLeft - 1);
+      } else {
+        $node.remove();
+      }
+    });
+  }, 1000);
 }
 
 $(document).ready(main);
